@@ -99,11 +99,12 @@ int main() {
   superPoder2 = populacao2 + area2 + pib2 + pibPerCapita2 + (area2 / densidadePopulacional2) + pontosTuristicos2;
   printf("Densidade populacional: %.2f habitantes por km²\n", densidadePopulacional2);
   printf("PIB per capita: %.2f reais\n\n", pibPerCapita2);
-  printf("Resultado = 1: jogador 1 vence\n");
-  printf("Resultado = 0: jogador 2 vence\n");
 
-  int resultado = superPoder1 > superPoder2;
+ if (superPoder1 > superPoder2){
+  printf("Carta 1 tem super poder (%.2f) maior que carta 2 (%.2f). Jogador 1 vence!\n", superPoder1, superPoder2);
+ } else {
+  printf("Carta 2 tem super poder (%.2f) maior que carta 1 (%.2f). Jogador 2 vence!\n", superPoder2, superPoder1);
+ }
 
-  printf("Resultado: %d\n", resultado);
   return 0;
 } 
