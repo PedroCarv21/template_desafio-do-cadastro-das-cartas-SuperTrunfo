@@ -8,11 +8,9 @@ int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
 
   char estado1, codigoDaCarta1[50], nomeDaCidade1[50];
-  int populacao1, pontosTuristicos1;
+  int populacao1, pontosTuristicos1, atributoDeComparacao;
   float area1, pib1, densidadePopulacional1, pibPerCapita1, superPoder1;
 
-  // Área para entrada de dados
-  
   printf("Estado: ");
   scanf(" %s", &estado1);
   
@@ -100,11 +98,90 @@ int main() {
   printf("Densidade populacional: %.2f habitantes por km²\n", densidadePopulacional2);
   printf("PIB per capita: %.2f reais\n\n", pibPerCapita2);
 
- if (superPoder1 > superPoder2){
-  printf("Carta 1 tem super poder (%.2f) maior que carta 2 (%.2f). Jogador 1 vence!\n", superPoder1, superPoder2);
- } else {
-  printf("Carta 2 tem super poder (%.2f) maior que carta 1 (%.2f). Jogador 2 vence!\n", superPoder2, superPoder1);
- }
 
+  printf("1 - População\n");
+  printf("2 - Área\n");
+  printf("3 - PIB\n");
+  printf("4 - Número de pontos turísticos\n");
+  printf("5 - Densidade demográfica\n");
+  printf("Escolha um dos atributos de comparação entre as cartas: ");
+  scanf(" %i", &atributoDeComparacao);
+
+  /*
+  O usuário deverá escolher um dos atributos para comparar as cartas com base no número correspondente. 
+  O programa deve então comparar os valores dos atributos escolhidos para as duas cartas e determinar 
+  qual carta é a vencedora, ou se houve um empate. O resultado da comparação deve ser exibido na tela, 
+  indicando qual carta venceu ou se houve um empate, juntamente com os valores dos atributos comparados.
+
+  OBS.: no caso da densidade demográfica, o vencedor é a carta com o menor valor.
+  */
+  switch (atributoDeComparacao)
+  {
+    case 1:
+      printf("Comparando o atributo: População\n");
+      if (populacao1 > populacao2) {
+        printf("Carta 1 tem população (%i) maior que carta 2 (%i). Jogador 1 vence!\n", populacao1, populacao2);
+      } 
+      else if (populacao1 == populacao2) {
+        printf("Carta 1 e carta 2 tem a mesma população (%i). Empate!\n", populacao1);
+      }
+      else {
+        printf("Carta 2 tem população (%i) maior que carta 1 (%i). Jogador 2 vence!\n", populacao2, populacao1);
+      }
+      break;
+    case 2:
+      printf("Comparando o atributo: Área\n");
+      if (area1 > area2) {
+        printf("Carta 1 tem área (%.2f) maior que carta 2 (%.2f). Jogador 1 vence!\n", area1, area2);
+      } 
+      else if (area1 == area2) {
+        printf("Carta 1 e carta 2 tem a mesma área (%.2f). Empate!\n", area1);
+      }
+      else {
+        printf("Carta 2 tem área (%.2f) maior que carta 1 (%.2f). Jogador 2 vence!\n", area2, area1);
+      }
+      break;
+    case 3:
+      printf("Comparando o atributo: PIB\n");
+
+      if (pib1 > pib2) {
+        printf("Carta 1 tem PIB (%.2f) maior que carta 2 (%.2f). Jogador 1 vence!\n", pib1, pib2);
+      } 
+      else if (pib1 == pib2) {
+        printf("Carta 1 e carta 2 tem o mesmo PIB (%.2f). Empate!\n", pib1);
+      }
+      else {
+        printf("Carta 2 tem PIB (%.2f) maior que carta 1 (%.2f). Jogador 2 vence!\n", pib2, pib1);
+      }
+      break;
+    case 4:
+      printf("Comparando o atributo: Número de pontos turísticos\n");
+
+      if (pontosTuristicos1 > pontosTuristicos2) {
+        printf("Carta 1 tem número de pontos turísticos (%i) maior que carta 2 (%i). Jogador 1 vence!\n", pontosTuristicos1, pontosTuristicos2);
+      } 
+      else if (pontosTuristicos1 == pontosTuristicos2) {
+        printf("Carta 1 e carta 2 tem o mesmo número de pontos turísticos (%i). Empate!\n", pontosTuristicos1);
+      }
+      else {
+        printf("Carta 2 tem número de pontos turísticos (%i) maior que carta 1 (%i). Jogador 2 vence!\n", pontosTuristicos2, pontosTuristicos1);
+      }
+      break;
+    case 5:
+      printf("Comparando o atributo: Densidade demográfica\n");
+      if (densidadePopulacional1 < densidadePopulacional2) {
+        printf("Carta 1 tem densidade demográfica (%.2f) menor que carta 2 (%.2f). Jogador 1 vence!\n", densidadePopulacional1, densidadePopulacional2);
+      } 
+      else if (densidadePopulacional1 == densidadePopulacional2) {
+        printf("Carta 1 e carta 2 tem a mesma densidade demográfica (%.2f). Empate!\n", densidadePopulacional1);
+      }
+      else {
+        printf("Carta 2 tem densidade demográfica (%.2f) menor que carta 1 (%.2f). Jogador 2 vence!\n", densidadePopulacional2, densidadePopulacional1);
+      }
+      break;
+    default:
+      printf("Atributo de comparação inválido. Por favor, escolha um número entre 1 e 5.\n");
+      break;
+  }
   return 0;
 } 
